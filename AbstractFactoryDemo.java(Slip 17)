@@ -59,4 +59,5 @@ public class AbstractFactoryDemo {
 // Output:-
 // Drawing a Circle
 // Drawing a Square
+
 // Drawing a Rectangle
