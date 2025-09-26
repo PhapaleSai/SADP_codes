@@ -1,0 +1,40 @@
+//slip 11 
+// Write a java program to implement Adapter pattern to design Heart Model to Beat Model
+
+// Adaptee
+class HeartModel {
+    void beat() { System.out.println("Heart is beating..."); }
+}
+
+// Target interface
+interface BeatModel {
+    void start();
+    void stop();
+    void setBPM(int bpm);
+}
+
+// Adapter
+class HeartAdapter implements BeatModel {
+    private HeartModel heart;
+    HeartAdapter(HeartModel heart) { this.heart = heart; }
+
+    public void start() { heart.beat(); }
+    public void stop() { System.out.println("Heart beat stopped."); }
+    public void setBPM(int bpm) { System.out.println("Setting BPM: " + bpm); }
+}
+
+// Client
+public class HeartAdapterDemo {
+    public static void main(String[] args) {
+        BeatModel beatAdapter = new HeartAdapter(new HeartModel());
+
+        beatAdapter.start();
+        beatAdapter.setBPM(72);
+        beatAdapter.stop();
+    }
+}
+
+// Output:
+// Heart is beating...
+// Setting BPM: 72
+// Heart beat stopped.

@@ -1,0 +1,90 @@
+//Slip 14
+// Write a Java Program to implement Command Design Pattern for Command Interface with execute() . Use this to create variety of commands for LightOnCommand, LightOffCommand, GarageDoorUpCommand, StereoOnWithCDCommand
+
+// Command Interface
+interface Command {
+    void execute();
+}
+
+// Receiver classes
+class Light {
+    void on() { System.out.println("Light is ON"); }
+    void off() { System.out.println("Light is OFF"); }
+}
+
+class GarageDoor {
+    void up() { System.out.println("Garage Door is OPEN"); }
+    void down() { System.out.println("Garage Door is CLOSED"); }
+}
+
+class Stereo {
+    void on() { System.out.println("Stereo is ON"); }
+    void off() { System.out.println("Stereo is OFF"); }
+    void setCD() { System.out.println("Stereo playing CD"); }
+}
+
+// Concrete Command classes
+class LightOnCommand implements Command {
+    private Light light;
+    LightOnCommand(Light light) { this.light = light; }
+    public void execute() { light.on(); }
+}
+
+class LightOffCommand implements Command {
+    private Light light;
+    LightOffCommand(Light light) { this.light = light; }
+    public void execute() { light.off(); }
+}
+
+class GarageDoorUpCommand implements Command {
+    private GarageDoor door;
+    GarageDoorUpCommand(GarageDoor door) { this.door = door; }
+    public void execute() { door.up(); }
+}
+
+class StereoOnWithCDCommand implements Command {
+    private Stereo stereo;
+    StereoOnWithCDCommand(Stereo stereo) { this.stereo = stereo; }
+    public void execute() { stereo.on(); stereo.setCD(); }
+}
+
+// Invoker class
+class RemoteControl {
+    private Command slot;
+    void setCommand(Command command) { slot = command; }
+    void pressButton() { slot.execute(); }
+}
+
+// Client
+public class CommandPatternDemo {
+    public static void main(String[] args) {
+        RemoteControl remote = new RemoteControl();
+
+        Light light = new Light();
+        GarageDoor garageDoor = new GarageDoor();
+        Stereo stereo = new Stereo();
+
+        // Execute Light On
+        remote.setCommand(new LightOnCommand(light));
+        remote.pressButton();
+
+        // Execute Light Off
+        remote.setCommand(new LightOffCommand(light));
+        remote.pressButton();
+
+        // Execute Garage Door Up
+        remote.setCommand(new GarageDoorUpCommand(garageDoor));
+        remote.pressButton();
+
+        // Execute Stereo On with CD
+        remote.setCommand(new StereoOnWithCDCommand(stereo));
+        remote.pressButton();
+    }
+}
+
+//output:-
+// Light is ON
+// Light is OFF
+// Garage Door is OPEN
+// Stereo is ON
+// Stereo playing CD

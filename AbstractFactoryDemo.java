@@ -1,0 +1,62 @@
+// Slip 17
+// Write a Java Program to implement Abstract Factory Pattern for Shape interface. 
+
+// Shape interface
+interface Shape {
+    void draw();
+}
+
+// Concrete Shapes
+class Circle implements Shape {
+    public void draw() { System.out.println("Drawing a Circle"); }
+}
+
+class Square implements Shape {
+    public void draw() { System.out.println("Drawing a Square"); }
+}
+
+class Rectangle implements Shape {
+    public void draw() { System.out.println("Drawing a Rectangle"); }
+}
+
+// Abstract Factory
+interface AbstractFactory {
+    Shape createShape(String type);
+}
+
+// Concrete Factory
+class ShapeFactory implements AbstractFactory {
+    public Shape createShape(String type) {
+        if (type.equalsIgnoreCase("CIRCLE")) return new Circle();
+        else if (type.equalsIgnoreCase("SQUARE")) return new Square();
+        else if (type.equalsIgnoreCase("RECTANGLE")) return new Rectangle();
+        else return null;
+    }
+}
+
+// Factory Producer
+class FactoryProducer {
+    static AbstractFactory getFactory() {
+        return new ShapeFactory();
+    }
+}
+
+// Client
+public class AbstractFactoryDemo {
+    public static void main(String[] args) {
+        AbstractFactory shapeFactory = FactoryProducer.getFactory();
+
+        Shape circle = shapeFactory.createShape("CIRCLE");
+        Shape square = shapeFactory.createShape("SQUARE");
+        Shape rectangle = shapeFactory.createShape("RECTANGLE");
+
+        circle.draw();
+        square.draw();
+        rectangle.draw();
+    }
+}
+
+// Output:-
+// Drawing a Circle
+// Drawing a Square
+// Drawing a Rectangle

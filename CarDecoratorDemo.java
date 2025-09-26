@@ -1,0 +1,47 @@
+// slip 12:-
+// Write a Java Program to implement Decorator Pattern for interface Car to define the assemble() method and then decorate it to Sports car and Luxury Car
+
+// Car interface
+interface Car {
+    String assemble();
+}
+
+// Basic Car implementation
+class BasicCar implements Car {
+    public String assemble() 
+    {
+         return "Basic Car";
+    }
+}
+
+// Decorators
+class SportsCar implements Car {
+    private Car car;
+    SportsCar(Car car) { this.car = car; }
+    public String assemble() { return car.assemble() + " + Sports Package"; }
+}
+
+class LuxuryCar implements Car {
+    private Car car;
+    LuxuryCar(Car car) { this.car = car; }
+    public String assemble() { return car.assemble() + " + Luxury Package"; }
+}
+
+// Client
+public class CarDecoratorDemo {
+    public static void main(String[] args) {
+        Car basicCar = new BasicCar();
+        System.out.println(basicCar.assemble());
+
+        Car sportsCar = new SportsCar(basicCar);
+        System.out.println(sportsCar.assemble());
+
+        Car luxurySportsCar = new LuxuryCar(sportsCar);
+        System.out.println(luxurySportsCar.assemble());
+    }
+}
+
+// Output:
+// Basic Car
+// Basic Car + Sports Package
+// Basic Car + Sports Package + Luxury Package

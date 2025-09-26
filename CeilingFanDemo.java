@@ -1,0 +1,61 @@
+//slip 7
+//Write a Java Program to implement command pattern to test Remote Control 
+
+// Command interface
+interface Command {
+    void execute();
+    void undo();
+}
+
+// Receiver
+class CeilingFan {
+    void high() { System.out.println("Ceiling Fan is HIGH"); }
+    void medium() { System.out.println("Ceiling Fan is MEDIUM"); }
+    void low() { System.out.println("Ceiling Fan is LOW"); }
+    void off() { System.out.println("Ceiling Fan is OFF"); }
+}
+
+// Concrete Command
+class CeilingFanHighCommand implements Command {
+    private CeilingFan fan;
+    private String prevState;
+    CeilingFanHighCommand(CeilingFan fan) { this.fan = fan; }
+    public void execute() {
+        prevState = "OFF"; // Simplified previous state
+        fan.high();
+    }
+    public void undo() {
+        switch (prevState) {
+            case "OFF": fan.off(); break;
+            case "LOW": fan.low(); break;
+            case "MEDIUM": fan.medium(); break;
+            case "HIGH": fan.high(); break;
+        }
+    }
+}
+
+// Invoker
+class RemoteControl {
+    private Command command;
+    void setCommand(Command command) { this.command = command; }
+    void pressButton() { command.execute(); }
+    void pressUndo() { command.undo(); }
+}
+
+// Client
+public class CeilingFanDemo {
+    public static void main(String[] args) {
+        CeilingFan fan = new CeilingFan();
+        RemoteControl remote = new RemoteControl();
+
+        Command high = new CeilingFanHighCommand(fan);
+
+        remote.setCommand(high);
+        remote.pressButton();  // Fan HIGH
+        remote.pressUndo();    // Fan back to OFF
+    }
+}
+
+// Output:
+// Ceiling Fan is HIGH
+// Ceiling Fan is OFF

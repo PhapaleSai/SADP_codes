@@ -1,0 +1,73 @@
+//Slip 10:-
+// Write a Java Program to implement Strategy Pattern for Duck Behavior. Create instance variable that holds current state of Duck from there, we just need to handle all Flying Behaviors and Quack Behavior
+
+// Strategy Interfaces
+interface FlyBehavior { void fly(); }
+interface QuackBehavior { void quack(); }
+
+// Concrete Behaviors
+class FlyWithWings implements FlyBehavior { public void fly() { System.out.println("Flying with wings!"); } }
+class FlyNoWay implements FlyBehavior { public void fly() { System.out.println("I can't fly."); } }
+class Quack implements QuackBehavior { public void quack() { System.out.println("Quack! Quack!"); } }
+class MuteQuack implements QuackBehavior { public void quack() { System.out.println("... (Silence)"); } }
+
+// Duck Class
+abstract class Duck {
+    FlyBehavior flyBehavior;
+    QuackBehavior quackBehavior;
+
+    void performFly() { flyBehavior.fly(); }
+    void performQuack() { quackBehavior.quack(); }
+    void swim() { System.out.println("All ducks can swim!"); }
+    void setFlyBehavior(FlyBehavior fb) { flyBehavior = fb; }
+    void setQuackBehavior(QuackBehavior qb) { quackBehavior = qb; }
+    abstract void display();
+}
+
+// Concrete Ducks
+class MallardDuck extends Duck {
+    MallardDuck() { flyBehavior = new FlyWithWings(); quackBehavior = new Quack(); }
+    void display() { System.out.println("I am a Mallard Duck!"); }
+}
+
+class ModelDuck extends Duck {
+    ModelDuck() { flyBehavior = new FlyNoWay(); quackBehavior = new MuteQuack(); }
+    void display() { System.out.println("I am a Model Duck!"); }
+}
+
+// Client
+public class DuckStrategyDemo {
+    public static void main(String[] args) {
+        Duck mallard = new MallardDuck();
+        mallard.display();
+        mallard.performFly();
+        mallard.performQuack();
+
+        mallard.setFlyBehavior(new FlyNoWay());
+        mallard.setQuackBehavior(new MuteQuack());
+        mallard.performFly();
+        mallard.performQuack();
+
+        Duck model = new ModelDuck();
+        model.display();
+        model.performFly();
+        model.performQuack();
+
+        model.setFlyBehavior(new FlyWithWings());
+        model.setQuackBehavior(new Quack());
+        model.performFly();
+        model.performQuack();
+    }
+}
+
+// Output:
+// I am a Mallard Duck!
+// Flying with wings!
+// Quack! Quack!
+// I can't fly.
+// ... (Silence)
+// I am a Model Duck!
+// I can't fly.
+// ... (Silence)
+// Flying with wings!
+// Quack! Quack!

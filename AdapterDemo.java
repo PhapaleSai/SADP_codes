@@ -1,0 +1,38 @@
+//slip 5:-
+//Write a Java Program to implement Adapter pattern for Enumeration and iterator ->
+
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Vector;
+
+class EnumerationIteratorAdapter<T> implements Iterator<T> {
+    private final Enumeration<T> enumeration;
+
+    public EnumerationIteratorAdapter(Enumeration<T> enumeration)
+    {
+        this.enumeration = enumeration;
+    }
+
+    public boolean hasNext() { return enumeration.hasMoreElements(); }
+    public T next() { return enumeration.nextElement(); }
+    public void remove() 
+    { throw new UnsupportedOperationException("Remove not supported"); 
+    }
+}
+
+public class AdapterDemo {
+    public static void main(String[] args) {
+        Vector<String> vector = new Vector<>();
+        vector.add("Apple");
+        vector.add("Banana");
+        vector.add("Cherry");
+
+        Iterator<String> iterator = new EnumerationIteratorAdapter<>(vector.elements());
+        iterator.forEachRemaining(System.out::println);
+    }
+}
+
+// Output:
+// Apple
+// Banana
+// Cherry

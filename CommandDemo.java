@@ -1,0 +1,51 @@
+//slip 6:
+//Write a Java Program to implement command pattern to test Remote Control 
+
+// Command interface
+interface Command {
+    void execute();
+}
+
+// Receiver
+class Light {
+    void on() { System.out.println("Light is ON"); }
+    void off() { System.out.println("Light is OFF"); }
+}
+
+// Invoker
+class RemoteControl {
+    private Command command;
+    void setCommand(Command command) { this.command = command; }
+    void pressButton() { command.execute(); }
+}
+
+// Concrete Commands
+class LightOnCommand implements Command {
+    private Light light;
+    LightOnCommand(Light light) { this.light = light; }
+    public void execute() { light.on(); }
+}
+
+class LightOffCommand implements Command {
+    private Light light;
+    LightOffCommand(Light light) { this.light = light; }
+    public void execute() { light.off(); }
+}
+
+// Client
+public class CommandDemo {
+    public static void main(String[] args) {
+        Light light = new Light();
+        RemoteControl remote = new RemoteControl();
+
+        remote.setCommand(new LightOnCommand(light));
+        remote.pressButton();
+
+        remote.setCommand(new LightOffCommand(light));
+        remote.pressButton();
+    }
+}
+
+// Output:
+// Light is ON
+// Light is OFF
