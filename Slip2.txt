@@ -1,4 +1,5 @@
 // Slip 2 :- Write a Java Program to implement Singleton pattern for multithreading 
+//Give FileName:- SingletonDemo.java
 //(Singleton Pattern Example in Java)
 
 class Singleton {
@@ -32,3 +33,4 @@ public class SingletonDemo {
 // Output :- 
 // Instance: Singleton@15db9742
 // Instance: Singleton@15db9742
+
