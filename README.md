@@ -2,7 +2,7 @@
 SADP_codes
 
 IMP
-# pip install requests to execute this in terminal
+# (pip install requests) to execute this in terminal
 import requests
 
 url = "https://raw.githubusercontent.com/PhapaleSai/sadp/main/Slip1.txt"
