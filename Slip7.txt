@@ -1,4 +1,5 @@
 //slip 7
+//Give FileName:- CeilingFanDemo.java
 //Write a Java Program to implement command pattern to test Remote Control 
 
 // Command interface
@@ -59,3 +60,4 @@ public class CeilingFanDemo {
 // Output:
 // Ceiling Fan is HIGH
 // Ceiling Fan is OFF
+
