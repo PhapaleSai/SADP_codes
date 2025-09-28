@@ -1,4 +1,5 @@
 //slip 6:
+//Give FileName:- CommandDemo.java(slip 6)
 //Write a Java Program to implement command pattern to test Remote Control 
 
 // Command interface
@@ -49,3 +50,4 @@ public class CommandDemo {
 // Output:
 // Light is ON
 // Light is OFF
+
