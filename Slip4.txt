@@ -1,4 +1,5 @@
 //Slip - 4 and Slip 19
+//Give FileName:- PizzaFactoryDemo.java
 //Q.1 Write a Java Program to implement Factory method for Pizza Store with createPizza(), orederPizza(), prepare(), Bake(), cut(), box(). Use this to create variety of pizza’s like NyStyleCheesePizza, ChicagoStyleCheesePizza etc. 
 
 abstract class Pizza 
@@ -56,3 +57,4 @@ Baking ChicagoStyleCheesePizza
 Cutting ChicagoStyleCheesePizza
 Boxing ChicagoStyleCheesePizza
 */
+
