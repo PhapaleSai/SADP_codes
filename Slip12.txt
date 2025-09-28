@@ -1,4 +1,5 @@
 // slip 12:-
+//Give FileName:- CarDecoratorDemo.java
 // Write a Java Program to implement Decorator Pattern for interface Car to define the assemble() method and then decorate it to Sports car and Luxury Car
 
 // Car interface
@@ -45,3 +46,4 @@ public class CarDecoratorDemo {
 // Basic Car
 // Basic Car + Sports Package
 // Basic Car + Sports Package + Luxury Package
+
