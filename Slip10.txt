@@ -1,4 +1,5 @@
 //Slip 10:-
+//Give FileName:- DuckStrategyDemo.java(Slip 10)
 // Write a Java Program to implement Strategy Pattern for Duck Behavior. Create instance variable that holds current state of Duck from there, we just need to handle all Flying Behaviors and Quack Behavior
 
 // Strategy Interfaces
@@ -71,3 +72,4 @@ public class DuckStrategyDemo {
 // ... (Silence)
 // Flying with wings!
 // Quack! Quack!
+
