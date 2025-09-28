@@ -1,5 +1,5 @@
 // Slip 3 and slip 18 :- Q.1 Write a JAVA Program to implement built-in support (java.util.Observable) Weather station with members temperature, humidity, pressure and methods mesurmentsChanged(), setMesurment(), getTemperature(), getHumidity(), getPressure() 
-
+//Give FileName:- WeatherStationDemo.java
 import java.util.Observable;
 import java.util.Observer;
 
@@ -46,3 +46,4 @@ public class WeatherStationDemo
 // Output :- Temperature: 25.3
 // Humidity: 65.0   
 // Pressure: 1013.1
+
