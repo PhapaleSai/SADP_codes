@@ -1,4 +1,5 @@
 // Slip 8
+//Give FileName :- CandyDispenserDemo.java(Slip 8)
 // Write a Java Program to implement State Pattern for Gumball Machine. 
 // Create instance variable that holds current state from there, we just need to handle all actions, behaviors and state transition that can happen 
 
@@ -93,3 +94,4 @@ public class CandyDispenserDemo {
 // You turned the crank.
 // A gumball comes rolling out!
 // Current state: SOLD_OUT
+
