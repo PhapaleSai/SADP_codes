@@ -1,4 +1,5 @@
 //slip 11 
+//Give FileName:- HeartAdapterDemo.java
 // Write a java program to implement Adapter pattern to design Heart Model to Beat Model
 
 // Adaptee
@@ -38,3 +39,4 @@ public class HeartAdapterDemo {
 // Heart is beating...
 // Setting BPM: 72
 // Heart beat stopped.
+
