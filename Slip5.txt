@@ -1,4 +1,5 @@
 //slip 5:-
+//Give File name :- AdapterDemo.java
 //Write a Java Program to implement Adapter pattern for Enumeration and iterator ->
 
 import java.util.Enumeration;
@@ -36,3 +37,4 @@ public class AdapterDemo {
 // Apple
 // Banana
 // Cherry
+
