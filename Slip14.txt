@@ -1,4 +1,5 @@
 //Slip 14
+//Give FileName:- CommandPatternDemo.java
 // Write a Java Program to implement Command Design Pattern for Command Interface with execute() . Use this to create variety of commands for LightOnCommand, LightOffCommand, GarageDoorUpCommand, StereoOnWithCDCommand
 
 // Command Interface
@@ -88,3 +89,4 @@ public class CommandPatternDemo {
 // Garage Door is OPEN
 // Stereo is ON
 // Stereo playing CD
+
