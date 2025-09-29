@@ -3,9 +3,7 @@
 //Write a Java Program to implement command pattern to test Remote Control 
 
 // Command interface
-interface Command {
-    void execute();
-}
+interface Command { void execute(); }
 
 // Receiver
 class Light {
@@ -14,40 +12,35 @@ class Light {
 }
 
 // Invoker
-class RemoteControl {
-    private Command command;
-    void setCommand(Command command) { this.command = command; }
-    void pressButton() { command.execute(); }
+class Remote {
+    private Command cmd;
+    void setCommand(Command c) { cmd = c; }
+    void press() { cmd.execute(); }
 }
 
 // Concrete Commands
-class LightOnCommand implements Command {
-    private Light light;
-    LightOnCommand(Light light) { this.light = light; }
-    public void execute() { light.on(); }
+class LightOn implements Command {
+    private Light l;
+    LightOn(Light l) { this.l = l; }
+    public void execute() { l.on(); }
 }
-
-class LightOffCommand implements Command {
-    private Light light;
-    LightOffCommand(Light light) { this.light = light; }
-    public void execute() { light.off(); }
+class LightOff implements Command {
+    private Light l;
+    LightOff(Light l) { this.l = l; }
+    public void execute() { l.off(); }
 }
 
 // Client
 public class CommandDemo {
     public static void main(String[] args) {
         Light light = new Light();
-        RemoteControl remote = new RemoteControl();
+        Remote r = new Remote();
 
-        remote.setCommand(new LightOnCommand(light));
-        remote.pressButton();
-
-        remote.setCommand(new LightOffCommand(light));
-        remote.pressButton();
+        r.setCommand(new LightOn(light));  r.press();
+        r.setCommand(new LightOff(light)); r.press();
     }
 }
 
 // Output:
 // Light is ON
 // Light is OFF
-
