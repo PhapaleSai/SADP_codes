@@ -1,65 +1,46 @@
 // Slip 17
 //Give File Name as :- AbstractFactoryDemo.java
+// Slip 17
 // Write a Java Program to implement Abstract Factory Pattern for Shape interface. 
 
-// Shape interface
-interface Shape {
-    void draw();
-}
+interface Shape { void draw(); }
 
-// Concrete Shapes
-class Circle implements Shape {
-    public void draw() { System.out.println("Drawing a Circle"); }
-}
+class Circle implements Shape { public void draw(){System.out.println("Drawing Circle");} }
+class Square implements Shape { public void draw(){System.out.println("Drawing Square");} }
+class Rectangle implements Shape { public void draw(){System.out.println("Drawing Rectangle");} }
 
-class Square implements Shape {
-    public void draw() { System.out.println("Drawing a Square"); }
-}
+interface AbstractFactory { Shape createShape(String type); }
 
-class Rectangle implements Shape {
-    public void draw() { System.out.println("Drawing a Rectangle"); }
-}
-
-// Abstract Factory
-interface AbstractFactory {
-    Shape createShape(String type);
-}
-
-// Concrete Factory
-class ShapeFactory implements AbstractFactory {
-    public Shape createShape(String type) {
-        if (type.equalsIgnoreCase("CIRCLE")) return new Circle();
-        else if (type.equalsIgnoreCase("SQUARE")) return new Square();
-        else if (type.equalsIgnoreCase("RECTANGLE")) return new Rectangle();
-        else return null;
+class ShapeFactory implements AbstractFactory
+ {
+    public Shape createShape(String type){
+        return switch(type.toUpperCase()){
+            case "CIRCLE" -> new Circle();
+            case "SQUARE" -> new Square();
+            case "RECTANGLE" -> new Rectangle();
+            default -> null;
+        };
     }
 }
 
-// Factory Producer
 class FactoryProducer {
-    static AbstractFactory getFactory() {
-        return new ShapeFactory();
-    }
-}
+     static AbstractFactory getFactory()
+     { 
+        return new ShapeFactory(); 
+    } 
+     }
 
-// Client
 public class AbstractFactoryDemo {
-    public static void main(String[] args) {
-        AbstractFactory shapeFactory = FactoryProducer.getFactory();
-
-        Shape circle = shapeFactory.createShape("CIRCLE");
-        Shape square = shapeFactory.createShape("SQUARE");
-        Shape rectangle = shapeFactory.createShape("RECTANGLE");
-
-        circle.draw();
-        square.draw();
-        rectangle.draw();
+    public static void main(String[] args){
+        AbstractFactory f = FactoryProducer.getFactory();
+        f.createShape("CIRCLE").draw();
+        f.createShape("SQUARE").draw();
+        f.createShape("RECTANGLE").draw();
     }
 }
+
 
 // Output:-
 // Drawing a Circle
 // Drawing a Square
-
 // Drawing a Rectangle
-
