@@ -11,53 +11,39 @@ interface Command {
 // Receiver
 class CeilingFan {
     void high() { System.out.println("Ceiling Fan is HIGH"); }
-    void medium() { System.out.println("Ceiling Fan is MEDIUM"); }
-    void low() { System.out.println("Ceiling Fan is LOW"); }
-    void off() { System.out.println("Ceiling Fan is OFF"); }
+    void off()  { System.out.println("Ceiling Fan is OFF"); }
 }
 
 // Concrete Command
-class CeilingFanHighCommand implements Command {
+class FanHighCommand implements Command {
     private CeilingFan fan;
-    private String prevState;
-    CeilingFanHighCommand(CeilingFan fan) { this.fan = fan; }
-    public void execute() {
-        prevState = "OFF"; // Simplified previous state
-        fan.high();
-    }
-    public void undo() {
-        switch (prevState) {
-            case "OFF": fan.off(); break;
-            case "LOW": fan.low(); break;
-            case "MEDIUM": fan.medium(); break;
-            case "HIGH": fan.high(); break;
-        }
-    }
+    FanHighCommand(CeilingFan fan) { this.fan = fan; }
+
+    public void execute() { fan.high(); }
+    public void undo()    { fan.off(); }
 }
 
 // Invoker
 class RemoteControl {
     private Command command;
-    void setCommand(Command command) { this.command = command; }
+    void setCommand(Command c) { command = c; }
     void pressButton() { command.execute(); }
-    void pressUndo() { command.undo(); }
+    void pressUndo()   { command.undo(); }
 }
 
 // Client
 public class CeilingFanDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         CeilingFan fan = new CeilingFan();
         RemoteControl remote = new RemoteControl();
 
-        Command high = new CeilingFanHighCommand(fan);
-
-        remote.setCommand(high);
+        remote.setCommand(new FanHighCommand(fan));
         remote.pressButton();  // Fan HIGH
-        remote.pressUndo();    // Fan back to OFF
+        remote.pressUndo();    // Fan OFF
     }
 }
 
 // Output:
 // Ceiling Fan is HIGH
 // Ceiling Fan is OFF
-
