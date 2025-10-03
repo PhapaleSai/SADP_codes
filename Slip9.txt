@@ -1,3 +1,54 @@
+//Slip 9
+//Give filename :- GumballMachine.java
+//write a java program to implement state pattern for Gumball machine. Create instance variable that holds current state from there , we just need to handle all actions , behaviuors and state transition that can happen 
+
+interface State {
+    void insertQuarter();
+    void ejectQuarter();
+    void turnCrank();
+}
+
+class GumballMachine {
+    State noQuarter = new State() {
+        public void insertQuarter() { System.out.println("Quarter inserted"); currentState = hasQuarter; }
+        public void ejectQuarter() { System.out.println("No quarter to eject"); }
+        public void turnCrank() { System.out.println("Insert quarter first"); }
+    };
+    State hasQuarter = new State() {
+        public void insertQuarter() { System.out.println("Quarter already inserted"); }
+        public void ejectQuarter() { System.out.println("Quarter returned"); currentState = noQuarter; }
+        public void turnCrank() { System.out.println("Crank turned, dispensing"); count--; currentState = (count > 0) ? noQuarter : soldOut; }
+    };
+    State soldOut = new State() {
+        public void insertQuarter() { System.out.println("Sold out"); }
+        public void ejectQuarter() { System.out.println("No quarter to eject"); }
+        public void turnCrank() { System.out.println("Sold out"); }
+    };
+
+    State currentState = soldOut;
+    int count;
+
+    GumballMachine(int count) {
+        this.count = count;
+        if (count > 0) currentState = noQuarter;
+    }
+
+    void insertQuarter() { currentState.insertQuarter(); }
+    void ejectQuarter() { currentState.ejectQuarter(); }
+    void turnCrank() { currentState.turnCrank(); }
+
+    public static void main(String[] args) {
+        GumballMachine machine = new GumballMachine(2);
+        machine.insertQuarter(); machine.turnCrank();
+        machine.insertQuarter(); machine.ejectQuarter();
+        machine.insertQuarter(); machine.turnCrank();
+        machine.insertQuarter(); machine.turnCrank();//Slod Out State
+    }
+}
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
 Sure! Let's design a **simple HR Application** using the **Spring Framework**. We'll make it simple and clear, suitable for learning or exam purposes. This will include:
 
 * **Employee model**
@@ -213,5 +264,6 @@ Employee{id=3, name='Charlie', department='Finance'}
    * Main file → `MainApp.java`
 
 ---
+
 
 
