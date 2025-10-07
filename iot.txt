@@ -1,0 +1,514 @@
+
+
+    # 1) Run some python programs on Pi like:  
+    # a) Read your name and print Hello message with name 
+    # b) Read two numbers and print their sum, difference, product and division.  
+    # c) Word and character count of a given string.  
+    # d) Area of a given shape (rectangle, triangle and circle) reading shape and appropriate     
+    # values from standard input
+
+    # a) Read your name and print Hello message with name 
+    name = input("Enter your name")
+    print("Hello " + name+"!")
+
+    Enter your namesai
+    Hello sai!
+
+    # b) Read two numbers and print their sum, difference, product and division.  
+    num1 = float(input("Enter 1st number:"))
+    num2 = float(input("Enter 2nd number:"))
+
+    print("Sum is :", num1 + num2)
+    print("Differnce is :", num1 - num2)
+    print("Product is :", num1 * num2)
+
+    if num2 == 0:
+        print("Division: Cannot divide by zero")
+    else:
+            print("Division is :" , num1 /num2)
+
+    Enter 1st number:10
+    Enter 2nd number:5
+    Sum is : 15.0
+    Differnce is : 5.0
+    Product is : 50.0
+    Division is : 2.0
+
+    # c) Word and character count of a given string.
+
+    text = input("Enter a string:")
+
+    word_count = len(text.split())
+    char_count = len(text)
+
+    print("Word Count is :",word_count)
+    print("Character Count is ",char_count)
+
+    Enter a string:i am sai
+    Word Count is : 3
+    Character Count is  8
+
+    #d) Area of a given shape (rectangle, triangle and circle) reading shape and appropriate values from standard input
+
+    shape = input("Enter the shape (rectangle/triangle/circle): ").lower() 
+    if shape == "rectangle": 
+        length = float(input("Enter length: ")) 
+        width = float(input("Enter width: ")) 
+        area = length * width 
+
+    elif shape == "triangle": 
+        base = float(input("Enter base: ")) 
+        height = float(input("Enter height: "))
+        area = 0.5 * base * height 
+
+    elif shape == "circle": 
+        radius = float(input("Enter radius: ")) 
+        area = 3.14159 * radius * radius 
+    else: 
+        area = None 
+        print("Invalid shape!") 
+
+    if area is not None: 
+        print("Area of the", shape, "is:", area)
+
+    Enter the shape (rectangle/triangle/circle): rectangle
+    Enter length: 4
+    Enter width: 4
+    Area of the rectangle is: 16.0
+
+    # 2) Run some python programs on Pi like:  
+    # a) Print a name 'n' times, where name and n are read from standard input, using for and  while loops.  
+    # b) Handle Divided by Zero Exception.  
+    # c) Print current time for 10 times with an interval of 10 seconds.  
+    # d) Read a fileline byline and print the word count of each line. 
+
+    # a) Print a name 'n' times, where name and n are read from standard input, using for and  while loops.  
+
+    name = input("Enter your name")
+    n = int(input("How many time do you want to print your name"))
+    print("First Using for loop")
+    for i in range(n):
+        print(name)
+        
+    print("Using While loop")
+    count = 0
+    while count < n:
+            print(name)
+            count += 1
+
+    Enter your namesai
+    How many time do you want to print your name4
+    First Using for loop
+    sai
+    sai
+    sai
+    sai
+    Using While loop
+    sai
+    sai
+    sai
+    sai
+
+    # b) Handle Divided by Zero Exception. 
+
+    try:
+        num1 = float(input("Enter 1st number:"))
+        num2 = float(input("Enter 2nd number:"))
+        result = num1 / num2
+        print("Result is :",result)
+    except ZeroDivisionError:
+        print("Error Canot divide by 0")
+
+    Enter 1st number:4
+    Enter 2nd number:2
+    Result is : 2.0
+
+    # c) Print current time for 10 times with an interval of 10 seconds.  
+    import time
+    from datetime import datetime
+
+    for i in range(10):
+        current_time = datetime.now().strftime('%H:%M:%S')
+        print("Current time is :",current_time)
+        time.sleep(10)
+        
+
+    Current time is : 20:12:31
+    Current time is : 20:12:41
+    Current time is : 20:12:51
+    Current time is : 20:13:01
+    Current time is : 20:13:11
+    Current time is : 20:13:21
+    Current time is : 20:13:31
+    Current time is : 20:13:41
+    Current time is : 20:13:51
+    Current time is : 20:14:01
+
+    # d) Read a fileline byline and print the word count of each line.
+    filename = "sample.txt"
+
+    with open(filename,"r") as file:
+        line_number = 1
+        for line in file:
+            words = line.split()
+            count = len(words)
+            print(f"Line {line_number} has {count} words.") 
+            line_number += 1 
+
+    Line 1 has 4 words.
+    Line 2 has 5 words.
+    Line 3 has 5 words.
+
+🖥️ Raspberry Pi Linux Commands – Practical Worksheet (with Explanations)
+
+🎯 Objective
+
+To learn and practice basic Linux commands on the Raspbian OS terminal
+in Raspberry Pi.
+This helps understand how files, folders, and processes are managed
+using the command line interface (CLI).
+
+------------------------------------------------------------------------
+
+🪄 How to Start
+
+1.  Start your Raspberry Pi.
+2.  Open the Terminal (black icon) or press Ctrl + Alt + T.
+3.  You’ll see a prompt like:
+4.  Type each command and press Enter to execute.
+
+------------------------------------------------------------------------
+
+🧠 Commands, Explanations & Practical Tasks
+
+1️⃣ ls – List Files and Folders
+
+-   Use: Displays all files and folders in the current directory.
+-   Syntax: ls [options]
+-   Examples:
+-   Task: Run ls -l and ls -a and note the difference.
+
+------------------------------------------------------------------------
+
+2️⃣ cd – Change Directory
+
+-   Use: Move between folders.
+
+-   Syntax: cd [foldername]
+
+-   Examples:
+
+-   Task: Try cd / then cd ~ and note what happens.
+
+------------------------------------------------------------------------
+
+3️⃣ touch – Create an Empty File
+
+-   Use: Creates a new blank file.
+
+-   Syntax: touch [filename]
+
+-   Example:
+
+-   Task: Run ls to confirm file creation.
+
+------------------------------------------------------------------------
+
+4️⃣ mv – Move or Rename Files
+
+-   Use: Moves or renames files.
+
+-   Syntax: mv [source] [destination]
+
+-   Examples:
+
+-   Task: Rename one file and move another.
+
+------------------------------------------------------------------------
+
+5️⃣ rm – Remove Files or Folders
+
+-   Use: Deletes files or folders permanently.
+
+-   Syntax: rm [filename]
+
+-   Examples:
+
+-   Note: Deleted files cannot be recovered.
+
+-   Task: Create a file, delete it using rm, and check with ls.
+
+------------------------------------------------------------------------
+
+6️⃣ man – Manual (Help Command)
+
+-   Use: Displays detailed help for any command.
+
+-   Syntax: man [command]
+
+-   Example:
+
+-   Task: Run man cd and read what it says (press q to exit).
+
+------------------------------------------------------------------------
+
+7️⃣ mkdir – Make Directory
+
+-   Use: Creates a new folder.
+
+-   Syntax: mkdir [foldername]
+
+-   Example:
+
+-   Task: Check with ls to see the new folder.
+
+------------------------------------------------------------------------
+
+8️⃣ rmdir – Remove Empty Directory
+
+-   Use: Deletes an empty folder.
+
+-   Syntax: rmdir [foldername]
+
+-   Example:
+
+-   Task: Create and extract your own tar file.
+
+------------------------------------------------------------------------
+
+-   Task: Try deleting an empty folder.
+
+------------------------------------------------------------------------
+
+9️⃣ tar – Archive Files
+
+-   Use: Combines multiple files into one archive (backup).
+-   Task: Create a file with text and view it using cat.
+
+------------------------------------------------------------------------
+
+1️⃣2️⃣ more – View File Page by Page
+
+-   Use: Shows large file content one screen at a time.
+-   Syntax: more [filename]
+-   Example:
+-   Navigation: Press Spacebar for next page, q to quit.
+
+------------------------------------------------------------------------
+
+1️⃣3️⃣ less – Scroll Through File
+
+-   Use: Similar to more but allows scrolling up/down.
+
+-   Syntax: less [filename]
+
+-   Example:
+
+-   Navigation: Use ↑ ↓ keys to scroll, q to quit.
+
+------------------------------------------------------------------------
+
+1️⃣4️⃣ ps – Process Status
+
+-   Use: Lists currently running programs or processes.
+
+-   Syntax: ps
+
+-   Example Output:
+
+-   Task: Run ps to see your terminal processes.
+
+------------------------------------------------------------------------
+
+1️⃣5️⃣ sudo – Superuser Command
+
+-   Use: Runs a command as administrator (root user).
+
+-   Syntax: sudo [command]
+
+-   Example:
+
+-   Task: Try using sudo ls /root.
+
+------------------------------------------------------------------------
+
+1️⃣6️⃣ cron – Task Scheduler
+
+-   Use: Runs commands automatically at set times.
+
+-   Syntax: crontab -e
+
+-   Example Entry:
+
+-   Task: Set a cron job and check if the file updates every minute.
+
+------------------------------------------------------------------------
+
+1️⃣7️⃣ chown – Change File Owner
+
+-   Use: Changes who owns the file.
+
+-   Syntax: sudo chown [user]:[group] [file]
+
+-   Example:
+
+-   Task: View ownership before and after using ls -l.
+
+------------------------------------------------------------------------
+
+1️⃣8️⃣ chgrp – Change Group Ownership
+
+-   Use: Changes the group that owns a file.
+
+-   Syntax: sudo chgrp [group] [file]
+
+-   Example:
+
+-   Task: Check file’s group before and after using ls -l.
+
+------------------------------------------------------------------------
+
+1️⃣9️⃣ ping – Test Internet Connection
+
+-   Use: Tests if a network or website is reachable.
+
+-   Syntax: ping [hostname or IP]
+
+-   Example:
+
+-   Syntax: tar -cvf [filename.tar] [foldername]
+
+-   Examples:
+
+🔟 gzip – Compress Files
+
+-   Use: Compresses files to save space.
+
+-   Syntax: gzip [filename]
+
+-   Examples:
+
+-   Task: Compress and decompress a text file.
+
+-   Task: View ownership before and after using ls -l.
+
+------------------------------------------------------------------------
+
+1️⃣8️⃣ chgrp – Change Group Ownership
+
+-   Use: Changes the group that owns a file.
+
+-   Syntax: sudo chgrp [group] [file]
+
+-   Example:
+
+-   Task: Check file’s group before and after using ls -l.
+
+------------------------------------------------------------------------
+
+1️⃣9️⃣ ping – Test Internet Connection
+
+-   Use: Tests if a network or website is reachable.
+-   Syntax: ping [hostname or IP]
+-   Example:
+
+------------------------------------------------------------------------
+
+1️⃣1️⃣ cat – View File Content
+
+-   Use: Displays file content on the screen.
+
+-   Syntax: cat [filename]
+
+-   Example:
+
+-   Task: Create a file with text and view it using cat.
+
+------------------------------------------------------------------------
+
+1️⃣2️⃣ more – View File Page by Page
+
+-   Use: Shows large file content one screen at a time.
+-   Syntax: more [filename]
+-   Example:
+-   Navigation: Press Spacebar for next page, q to quit.
+
+------------------------------------------------------------------------
+
+1️⃣3️⃣ less – Scroll Through File
+
+-   Use: Similar to more but allows scrolling up/down.
+
+-   Syntax: less [filename]
+
+-   Example:
+
+-   Navigation: Use ↑ ↓ keys to scroll, q to quit.
+
+------------------------------------------------------------------------
+
+1️⃣4️⃣ ps – Process Status
+
+-   Use: Lists currently running programs or processes.
+
+-   Syntax: ps
+
+-   Example Output:
+
+-   Task: Run ps to see your terminal processes.
+
+------------------------------------------------------------------------
+
+1️⃣5️⃣ sudo – Superuser Command
+
+-   Use: Runs a command as administrator (root user).
+
+-   Syntax: sudo [command]
+
+-   Example:
+
+-   Task: Try using sudo ls /root.
+
+------------------------------------------------------------------------
+
+1️⃣6️⃣ cron – Task Scheduler
+
+-   Use: Runs commands automatically at set times.
+
+-   Syntax: crontab -e
+
+-   Example Entry:
+
+-   Task: Set a cron job and check if the file updates every minute.
+
+------------------------------------------------------------------------
+
+1️⃣7️⃣ chown – Change File Owner
+
+-   Use: Changes who owns the file.
+
+-   Syntax: sudo chown [user]:[group] [file]
+
+-   Example:
+
+-   Task: View ownership before and after using ls -l.
+
+------------------------------------------------------------------------
+
+1️⃣8️⃣ chgrp – Change Group Ownership
+
+-   Use: Changes the group that owns a file.
+
+-   Syntax: sudo chgrp [group] [file]
+
+-   Example:
+
+-   Task: Check file’s group before and after using ls -l.
+
+------------------------------------------------------------------------
+
+1️⃣9️⃣ ping – Test Internet Connection
+
+-   Use: Tests if a network or website is reachable.
+-   Syntax: ping [hostname or IP]
+-   Example:
