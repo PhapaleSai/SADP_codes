@@ -46,5 +46,12 @@ class GumballMachine {
     }
 }
 
-------------------------------------------------------------------------------------------------------------------------------------
-
+// output :- 
+// Quarter inserted
+// Crank turned, dispensing
+// Quarter inserted
+// Quarter returned
+// Quarter inserted
+// Crank turned, dispensing
+// Sold out
+// Sold out
