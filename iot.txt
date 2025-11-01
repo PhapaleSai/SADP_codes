@@ -158,357 +158,224 @@
     Line 1 has 4 words.
     Line 2 has 5 words.
     Line 3 has 5 words.
-
-🖥️ Raspberry Pi Linux Commands – Practical Worksheet (with Explanations)
-
+--------------------------------------------------------------------
+🖥️ Raspberry Pi Linux Commands – Practical Worksheet
 🎯 Objective
-
-To learn and practice basic Linux commands on the Raspbian OS terminal
-in Raspberry Pi.
-This helps understand how files, folders, and processes are managed
-using the command line interface (CLI).
-
-------------------------------------------------------------------------
+Learn and practice basic Linux commands on Raspberry Pi (Raspbian OS) using the Terminal.
+Understand how files, folders, and processes are managed using the Command Line Interface (CLI).
 
 🪄 How to Start
-
-1.  Start your Raspberry Pi.
-2.  Open the Terminal (black icon) or press Ctrl + Alt + T.
-3.  You’ll see a prompt like:
-4.  Type each command and press Enter to execute.
-
-------------------------------------------------------------------------
-
-🧠 Commands, Explanations & Practical Tasks
-
+Boot up your Raspberry Pi.
+Open the Terminal (black icon) or press Ctrl + Alt + T.
+You’ll see a prompt like:
+pi@raspberrypi:~ $
+Type each command and press Enter to execute.
+🧠 Commands, Examples & Explanations
 1️⃣ ls – List Files and Folders
+Use: Displays files and folders in the current directory.
+Syntax:
 
--   Use: Displays all files and folders in the current directory.
--   Syntax: ls [options]
--   Examples:
--   Task: Run ls -l and ls -a and note the difference.
+ls [options]
+Examples:
 
-------------------------------------------------------------------------
+ls
+ls -l
+ls -a
+Explanation:
 
+ls → lists files/folders.
+ls -l → detailed info (permissions, owner, size, date).
+ls -a → includes hidden files.
 2️⃣ cd – Change Directory
+Use: Move between folders.
+Syntax:
 
--   Use: Move between folders.
+cd [foldername]
+Examples:
 
--   Syntax: cd [foldername]
-
--   Examples:
-
--   Task: Try cd / then cd ~ and note what happens.
-
-------------------------------------------------------------------------
+cd /
+cd ~
+cd /home/pi/Desktop
+Explanation: Navigates between directories. ~ represents your home directory.
 
 3️⃣ touch – Create an Empty File
+Use: Creates a new blank file.
+Syntax:
 
--   Use: Creates a new blank file.
+touch [filename]
+Example:
 
--   Syntax: touch [filename]
-
--   Example:
-
--   Task: Run ls to confirm file creation.
-
-------------------------------------------------------------------------
+touch notes.txt
+ls
+Explanation: Creates a new empty file named notes.txt.
 
 4️⃣ mv – Move or Rename Files
+Use: Moves or renames files.
+Syntax:
 
--   Use: Moves or renames files.
+mv [source] [destination]
+Examples:
 
--   Syntax: mv [source] [destination]
-
--   Examples:
-
--   Task: Rename one file and move another.
-
-------------------------------------------------------------------------
+mv notes.txt /home/pi/Documents
+mv notes.txt mynotes.txt
+Explanation: Used for moving files or renaming them.
 
 5️⃣ rm – Remove Files or Folders
+Use: Deletes files or folders permanently.
+Syntax:
 
--   Use: Deletes files or folders permanently.
+rm [filename]
+Examples:
 
--   Syntax: rm [filename]
-
--   Examples:
-
--   Note: Deleted files cannot be recovered.
-
--   Task: Create a file, delete it using rm, and check with ls.
-
-------------------------------------------------------------------------
+rm old.txt
+rm -r myfolder
+Explanation: Removes files or directories (-r means recursive).
+⚠️ Use with caution — deleted files cannot be recovered.
 
 6️⃣ man – Manual (Help Command)
+Use: Displays detailed help for a command.
+Syntax:
 
--   Use: Displays detailed help for any command.
+man [command]
+Example:
 
--   Syntax: man [command]
-
--   Example:
-
--   Task: Run man cd and read what it says (press q to exit).
-
-------------------------------------------------------------------------
+man ls
+Explanation: Shows manual pages for commands. Press q to exit.
 
 7️⃣ mkdir – Make Directory
+Use: Creates a new folder.
+Syntax:
 
--   Use: Creates a new folder.
+mkdir [foldername]
+Example:
 
--   Syntax: mkdir [foldername]
-
--   Example:
-
--   Task: Check with ls to see the new folder.
-
-------------------------------------------------------------------------
+mkdir Projects
+ls
+Explanation: Creates a directory called Projects.
 
 8️⃣ rmdir – Remove Empty Directory
+Use: Deletes an empty folder.
+Syntax:
 
--   Use: Deletes an empty folder.
+rmdir [foldername]
+Example:
 
--   Syntax: rmdir [foldername]
-
--   Example:
-
--   Task: Create and extract your own tar file.
-
-------------------------------------------------------------------------
-
--   Task: Try deleting an empty folder.
-
-------------------------------------------------------------------------
+rmdir Projects
+Explanation: Removes only empty directories.
 
 9️⃣ tar – Archive Files
+Use: Combines multiple files into one archive.
+Syntax:
 
--   Use: Combines multiple files into one archive (backup).
--   Task: Create a file with text and view it using cat.
+tar -cvf [archive.tar] [foldername]
+tar -xvf [archive.tar]
+Examples:
 
-------------------------------------------------------------------------
-
-1️⃣2️⃣ more – View File Page by Page
-
--   Use: Shows large file content one screen at a time.
--   Syntax: more [filename]
--   Example:
--   Navigation: Press Spacebar for next page, q to quit.
-
-------------------------------------------------------------------------
-
-1️⃣3️⃣ less – Scroll Through File
-
--   Use: Similar to more but allows scrolling up/down.
-
--   Syntax: less [filename]
-
--   Example:
-
--   Navigation: Use ↑ ↓ keys to scroll, q to quit.
-
-------------------------------------------------------------------------
-
-1️⃣4️⃣ ps – Process Status
-
--   Use: Lists currently running programs or processes.
-
--   Syntax: ps
-
--   Example Output:
-
--   Task: Run ps to see your terminal processes.
-
-------------------------------------------------------------------------
-
-1️⃣5️⃣ sudo – Superuser Command
-
--   Use: Runs a command as administrator (root user).
-
--   Syntax: sudo [command]
-
--   Example:
-
--   Task: Try using sudo ls /root.
-
-------------------------------------------------------------------------
-
-1️⃣6️⃣ cron – Task Scheduler
-
--   Use: Runs commands automatically at set times.
-
--   Syntax: crontab -e
-
--   Example Entry:
-
--   Task: Set a cron job and check if the file updates every minute.
-
-------------------------------------------------------------------------
-
-1️⃣7️⃣ chown – Change File Owner
-
--   Use: Changes who owns the file.
-
--   Syntax: sudo chown [user]:[group] [file]
-
--   Example:
-
--   Task: View ownership before and after using ls -l.
-
-------------------------------------------------------------------------
-
-1️⃣8️⃣ chgrp – Change Group Ownership
-
--   Use: Changes the group that owns a file.
-
--   Syntax: sudo chgrp [group] [file]
-
--   Example:
-
--   Task: Check file’s group before and after using ls -l.
-
-------------------------------------------------------------------------
-
-1️⃣9️⃣ ping – Test Internet Connection
-
--   Use: Tests if a network or website is reachable.
-
--   Syntax: ping [hostname or IP]
-
--   Example:
-
--   Syntax: tar -cvf [filename.tar] [foldername]
-
--   Examples:
+tar -cvf backup.tar Documents
+tar -xvf backup.tar
+Explanation:
+-c create, -v verbose, -f file name, -x extract.
 
 🔟 gzip – Compress Files
+Use: Compresses or decompresses files.
+Syntax:
 
--   Use: Compresses files to save space.
+gzip [filename]
+gunzip [filename.gz]
+Examples:
 
--   Syntax: gzip [filename]
-
--   Examples:
-
--   Task: Compress and decompress a text file.
-
--   Task: View ownership before and after using ls -l.
-
-------------------------------------------------------------------------
-
-1️⃣8️⃣ chgrp – Change Group Ownership
-
--   Use: Changes the group that owns a file.
-
--   Syntax: sudo chgrp [group] [file]
-
--   Example:
-
--   Task: Check file’s group before and after using ls -l.
-
-------------------------------------------------------------------------
-
-1️⃣9️⃣ ping – Test Internet Connection
-
--   Use: Tests if a network or website is reachable.
--   Syntax: ping [hostname or IP]
--   Example:
-
-------------------------------------------------------------------------
+gzip notes.txt
+gunzip notes.txt.gz
+Explanation:
+gzip compresses and gunzip decompresses files.
 
 1️⃣1️⃣ cat – View File Content
+Use: Displays file content on the screen.
+Syntax:
 
--   Use: Displays file content on the screen.
+cat [filename]
+Example:
 
--   Syntax: cat [filename]
-
--   Example:
-
--   Task: Create a file with text and view it using cat.
-
-------------------------------------------------------------------------
+cat notes.txt
+Explanation: Displays the full contents of a file.
 
 1️⃣2️⃣ more – View File Page by Page
+Use: Shows large file content one screen at a time.
+Syntax:
 
--   Use: Shows large file content one screen at a time.
--   Syntax: more [filename]
--   Example:
--   Navigation: Press Spacebar for next page, q to quit.
+more [filename]
+Example:
 
-------------------------------------------------------------------------
+more longfile.txt
+Explanation: Press Spacebar for the next page, q to quit.
 
 1️⃣3️⃣ less – Scroll Through File
+Use: Similar to more but allows both up and down scrolling.
+Syntax:
 
--   Use: Similar to more but allows scrolling up/down.
+less [filename]
+Example:
 
--   Syntax: less [filename]
-
--   Example:
-
--   Navigation: Use ↑ ↓ keys to scroll, q to quit.
-
-------------------------------------------------------------------------
+less log.txt
+Explanation: Use ↑ and ↓ to scroll, q to exit.
 
 1️⃣4️⃣ ps – Process Status
+Use: Lists currently running processes.
+Syntax:
 
--   Use: Lists currently running programs or processes.
+ps
+Example:
 
--   Syntax: ps
-
--   Example Output:
-
--   Task: Run ps to see your terminal processes.
-
-------------------------------------------------------------------------
+ps
+Explanation: Displays process IDs (PID) and terminal sessions.
 
 1️⃣5️⃣ sudo – Superuser Command
+Use: Runs a command as the administrator (root user).
+Syntax:
 
--   Use: Runs a command as administrator (root user).
+sudo [command]
+Example:
 
--   Syntax: sudo [command]
-
--   Example:
-
--   Task: Try using sudo ls /root.
-
-------------------------------------------------------------------------
+sudo ls /root
+Explanation: Grants admin rights for restricted tasks.
 
 1️⃣6️⃣ cron – Task Scheduler
+Use: Runs commands automatically at set times.
+Syntax:
 
--   Use: Runs commands automatically at set times.
+crontab -e
+Example Entry:
 
--   Syntax: crontab -e
-
--   Example Entry:
-
--   Task: Set a cron job and check if the file updates every minute.
-
-------------------------------------------------------------------------
+* * * * * echo "Hello Pi" >> /home/pi/cronlog.txt
+Explanation: Runs every minute, adding "Hello Pi" to the file cronlog.txt.
 
 1️⃣7️⃣ chown – Change File Owner
+Use: Changes who owns a file.
+Syntax:
 
--   Use: Changes who owns the file.
+sudo chown [user]:[group] [file]
+Example:
 
--   Syntax: sudo chown [user]:[group] [file]
-
--   Example:
-
--   Task: View ownership before and after using ls -l.
-
-------------------------------------------------------------------------
+sudo chown pi:pi notes.txt
+Explanation: Transfers ownership of a file to a specific user/group.
 
 1️⃣8️⃣ chgrp – Change Group Ownership
+Use: Changes the group that owns a file.
+Syntax:
 
--   Use: Changes the group that owns a file.
+sudo chgrp [group] [file]
+Example:
 
--   Syntax: sudo chgrp [group] [file]
-
--   Example:
-
--   Task: Check file’s group before and after using ls -l.
-
-------------------------------------------------------------------------
+sudo chgrp admin notes.txt
+Explanation: Assigns file to a group (e.g., admin, users).
 
 1️⃣9️⃣ ping – Test Internet Connection
+Use: Tests if a network or website is reachable.
+Syntax:
 
--   Use: Tests if a network or website is reachable.
--   Syntax: ping [hostname or IP]
--   Example:
+ping [hostname or IP]
+Example:
+
+ping google.com
+Explanation: Sends data packets to check connectivity.
+Press Ctrl + C to stop.
