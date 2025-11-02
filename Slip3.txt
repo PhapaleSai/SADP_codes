@@ -1,4 +1,5 @@
 // Slip 3 and slip 18 :- Q.1 Write a JAVA Program to implement built-in support (java.util.Observable) Weather station with members temperature, humidity, pressure and methods mesurmentsChanged(), setMesurment(), getTemperature(), getHumidity(), getPressure() 
+//Give filename:- WeatherStationDemo.java
 
 import java.util.Observable;
 import java.util.Observer;
@@ -73,3 +74,4 @@ Or a stock market app — investors get updates when stock prices change.
 * Can cause performance issues with too many observers.
 * Notification sequence can be hard to control or debug.
 */
+
