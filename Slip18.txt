@@ -1,5 +1,5 @@
 // Slip 3 and slip 18 :- Q.1 Write a JAVA Program to implement built-in support (java.util.Observable) Weather station with members temperature, humidity, pressure and methods mesurmentsChanged(), setMesurment(), getTemperature(), getHumidity(), getPressure() 
-//Give FileName:- WeatherStationDemo.java
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -24,7 +24,8 @@ class WeatherDisplay implements Observer
 {
     public void update(Observable obs, Object arg) 
     {
-        if (obs instanceof WeatherStation) {
+        if (obs instanceof WeatherStation)
+        {
             WeatherStation ws = (WeatherStation) obs;
             System.out.println("Temperature: " + ws.getTemperature());
             System.out.println("Humidity: " + ws.getHumidity());
@@ -46,3 +47,29 @@ public class WeatherStationDemo
 // Output :- Temperature: 25.3
 // Humidity: 65.0   
 // Pressure: 1013.1
+
+/* Explanation:
+Observer Design Pattern
+**🔹 Pattern Type:**
+Behavioral Design Pattern
+
+**🔹 Definition:**
+Defines a one-to-many relationship where changes in one object (subject) are automatically notified to multiple dependent objects (observers).
+
+**🔹 Why to Use:**
+Used when one object’s change should update others automatically without tight coupling.
+
+**🔹 Real-life Example:**
+Like YouTube subscriptions — when a creator uploads a new video, all subscribers get notified.
+Or a stock market app — investors get updates when stock prices change.
+
+**🔹 Advantages:**
+
+* Promotes loose coupling between objects.
+* Supports dynamic relationships (observers can be added/removed anytime).
+
+**🔹 Disadvantages:**
+
+* Can cause performance issues with too many observers.
+* Notification sequence can be hard to control or debug.
+*/
