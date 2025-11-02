@@ -6,7 +6,8 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Vector;
 
-class EnumerationIteratorAdapter<T> implements Iterator<T> {
+class EnumerationIteratorAdapter<T> implements Iterator<T>
+ {
     private final Enumeration<T> enumeration;
 
     public EnumerationIteratorAdapter(Enumeration<T> enumeration)
@@ -22,7 +23,8 @@ class EnumerationIteratorAdapter<T> implements Iterator<T> {
 }
 
 public class AdapterDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+     {
         Vector<String> vector = new Vector<>();
         vector.add("Apple");
         vector.add("Banana");
@@ -33,8 +35,32 @@ public class AdapterDemo {
     }
 }
 
-// Output:
+/* Output:
 // Apple
 // Banana
 // Cherry
 
+Adapter pattern Explanation:
+**🔹 Pattern Type:**
+Structural Design Pattern
+
+**🔹 Definition:**
+Allows incompatible interfaces to work together by wrapping one class with an adapter that converts its interface into one expected by the client.
+
+**🔹 Why to Use:**
+Used when you want to integrate classes with mismatched interfaces without modifying their code.
+
+**🔹 Real-life Example:**
+Like a power adapter — lets a European plug fit into an Indian socket.
+Or a card reader — lets an SD card connect via a USB port.
+
+**🔹 Advantages:**
+
+* Increases code reusability and compatibility.
+* Allows integration of legacy code with new systems.
+
+**🔹 Disadvantages:**
+
+* Adds an extra layer of complexity.
+* Can make debugging harder due to multiple levels of abstraction.
+*/
