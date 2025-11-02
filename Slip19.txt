@@ -1,5 +1,4 @@
 //Slip - 4 and Slip 19
-//Give FileName:- PizzaFactoryDemo.java
 //Q.1 Write a Java Program to implement Factory method for Pizza Store with createPizza(), orederPizza(), prepare(), Bake(), cut(), box(). Use this to create variety of pizza’s like NyStyleCheesePizza, ChicagoStyleCheesePizza etc. 
 
 abstract class Pizza 
@@ -15,7 +14,8 @@ class NyStyleCheesePizza extends Pizza {}
 class ChicagoStyleCheesePizza extends Pizza {}
 
 abstract class PizzaStore {
-    public Pizza orderPizza() {
+    public Pizza orderPizza() 
+    {
         Pizza pizza = createPizza();
         pizza.prepare();
         pizza.bake();
@@ -23,6 +23,7 @@ abstract class PizzaStore {
         pizza.box();
         return pizza;
     }
+
     protected abstract Pizza createPizza();
 }
 
@@ -31,15 +32,19 @@ class NyPizzaStore extends PizzaStore
     protected Pizza createPizza() 
     {
          return new NyStyleCheesePizza();
-        }
+    }
 }
 
 class ChicagoPizzaStore extends PizzaStore {
-    protected Pizza createPizza() { return new ChicagoStyleCheesePizza(); }
+    protected Pizza createPizza() 
+    { 
+        return new ChicagoStyleCheesePizza(); 
+    }
 }
 
 public class PizzaFactoryDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         new NyPizzaStore().orderPizza();
         System.out.println();
         new ChicagoPizzaStore().orderPizza();
@@ -56,4 +61,27 @@ Preparing ChicagoStyleCheesePizza
 Baking ChicagoStyleCheesePizza
 Cutting ChicagoStyleCheesePizza
 Boxing ChicagoStyleCheesePizza
+----------------------
+
+Explanation: Factory Method Pattern
+**🔹 Pattern Type:**
+Creational Design Pattern
+
+**🔹 Definition:**
+Defines an interface for creating objects but lets subclasses decide which class to instantiate.
+
+**🔹 Why to Use:**
+Used when object creation logic varies but you want to keep it centralized and flexible.
+
+**🔹 Real-life Example:**
+Like a logistics company — the factory method decides whether to use a truck or a ship for delivery.
+Or a document editor — creates Word, PDF, or Excel files using the same interface.
+
+**🔹 Advantages:**
+* Promotes loose coupling and flexibility in object creation.
+* Makes code easier to maintain and extend.
+
+**🔹 Disadvantages:**
+* Adds extra classes and complexity.
+* Can be harder to understand for simple object creation.
 */
