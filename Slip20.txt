@@ -1,5 +1,5 @@
 //SLIP 1 and Slip 20
-Give fileName :- DecoratorExample.java
+//Give fileName :- DecoratorExample.java
 //  - Q.1 Write a Java Program to implement I/O Decorator for converting uppercase letters to lower case letters.(Decorator Pattern Example in Java)
 
 class TextMessage {
@@ -59,6 +59,7 @@ In a **coffee shop**, you start with plain coffee and add milk or sugar — each
 ✖ Can create many small classes
 ✖ Debugging becomes harder
 ✖ Structure may get complex if overused
+*/
 
 **Type:**
 **Structural Design Pattern**
