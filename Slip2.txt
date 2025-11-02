@@ -1,5 +1,4 @@
 // Slip 2 :- Write a Java Program to implement Singleton pattern for multithreading 
-//Give FileName:- SingletonDemo.java
 //(Singleton Pattern Example in Java)
 
 class Singleton {
@@ -34,3 +33,27 @@ public class SingletonDemo {
 // Instance: Singleton@15db9742
 // Instance: Singleton@15db9742
 
+/*Explanation:-
+**Singleton Pattern (Short Notes):**
+Pattern Type:
+Creational Design Pattern
+
+**Definition:**
+Ensures that only one instance of a class exists and provides a global point of access to it.
+
+**Why to use:**
+Used when exactly one object is needed to coordinate actions across the system (e.g., managing shared resources).
+
+**Real-life Example:**
+Or a **Database Connection Manager** — one instance manages all connections.
+Another example is a **Logger** — one shared logger records system events.
+
+**Advantages:**
+* Controlled access to a single instance.
+* Reduces memory usage by avoiding multiple instances.
+
+**Disadvantages:**
+* Difficult to unit test (due to global state).
+* Can lead to tight coupling and hidden dependencies.
+* May introduce issues in multithreaded environments if not implemented correctly.
+*/
