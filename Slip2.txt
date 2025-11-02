@@ -1,4 +1,5 @@
 // Slip 2 :- Write a Java Program to implement Singleton pattern for multithreading 
+//Give filename :- SingletonDemo.java
 //(Singleton Pattern Example in Java)
 
 class Singleton {
@@ -57,3 +58,4 @@ Another example is a **Logger** — one shared logger records system events.
 * Can lead to tight coupling and hidden dependencies.
 * May introduce issues in multithreaded environments if not implemented correctly.
 */
+
