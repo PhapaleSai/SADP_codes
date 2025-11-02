@@ -1,20 +1,22 @@
 //SLIP 1 and Slip 20
-//Give FileName:- DecoratorExample.java
 //  - Q.1 Write a Java Program to implement I/O Decorator for converting uppercase letters to lower case letters.(Decorator Pattern Example in Java)
 
 class TextMessage {
     private String text;
 
-    public TextMessage(String text) {
+    public TextMessage(String text) 
+    {
         this.text = text;
     }
 
-    public String getText() {
+    public String getText() 
+    {
         return text;
     }
 
     // Decorator method to convert text to lowercase
-    public TextMessage toLowerCase() {
+    public TextMessage toLowerCase() 
+    {
         this.text = this.text.toLowerCase();
         return this;  // return the same object for chaining
     }
@@ -26,6 +28,39 @@ public class DecoratorExample {
     {
         TextMessage message = new TextMessage("Hello, WORLD!");
         message.toLowerCase();  // Apply the lowercase transformation
-        System.out.println(message.getText());  // Output: hello, world!
+        System.out.println(message.getText());  
     }
 }
+
+// Output: hello, world!
+
+/*Explanation:-
+
+### 🎓 **Decorator Pattern (Summary)**
+
+**Definition:**
+A **structural design pattern** that lets you **add new behavior to objects dynamically** without changing their original class. It wraps an object with another (decorator) that adds or modifies functionality.
+
+**Intent:**
+
+* Extend or modify object behavior **at runtime**.
+* Avoids subclassing for every new feature.
+
+**Real-Life Example:**
+In a **coffee shop**, you start with plain coffee and add milk or sugar — each decorator adds new features.
+
+**Advantages:**
+✔ Adds behavior dynamically
+✔ Promotes flexibility and code reuse
+✔ Avoids many subclasses
+
+**Disadvantages:**
+✖ Can create many small classes
+✖ Debugging becomes harder
+✖ Structure may get complex if overused
+
+**Type:**
+**Structural Design Pattern**
+
+---
+*/
