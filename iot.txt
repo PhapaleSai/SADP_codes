@@ -144,20 +144,25 @@
     Current time is : 20:13:51
     Current time is : 20:14:01
 
-    # d) Read a fileline byline and print the word count of each line.
-    filename = "sample.txt"
+# d) Read a file line by line and print the word count of each line
 
-    with open(filename,"r") as file:
-        line_number = 1
-        for line in file:
-            words = line.split()
-            count = len(words)
-            print(f"Line {line_number} has {count} words.") 
-            line_number += 1 
+filename = "sample.txt"
 
-    Line 1 has 4 words.
-    Line 2 has 5 words.
-    Line 3 has 5 words.
+with open(filename, "r") as file:
+    line_number = 1
+    for line in file:
+        line = line.strip()  # remove extra spaces/newline
+        words = line.split()
+        count = len(words)
+        print(f"Line {line_number}: {line}")
+        print(f"→ Word count: {count}\n")
+        line_number += 1
+
+    Line 1: Hello world
+    → Word count: 2
+    
+    Line 2: This is a Python program
+    → Word count: 5
 --------------------------------------------------------------------
 🖥️ Raspberry Pi Linux Commands – Practical Worksheet
 🎯 Objective
