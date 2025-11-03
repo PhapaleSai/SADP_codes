@@ -22,6 +22,7 @@ abstract class Duck {
     void swim() { System.out.println("All ducks can swim!"); }
     void setFlyBehavior(FlyBehavior fb) { flyBehavior = fb; }
     void setQuackBehavior(QuackBehavior qb) { quackBehavior = qb; }
+
     abstract void display();
 }
 
@@ -39,37 +40,69 @@ class ModelDuck extends Duck {
 // Client
 public class DuckStrategyDemo {
     public static void main(String[] args) {
-        Duck mallard = new MallardDuck();
-        mallard.display();
-        mallard.performFly();
-        mallard.performQuack();
+        Duck duck = new MallardDuck();
+        duck.display();
+        duck.performFly();
+        duck.performQuack();
 
-        mallard.setFlyBehavior(new FlyNoWay());
-        mallard.setQuackBehavior(new MuteQuack());
-        mallard.performFly();
-        mallard.performQuack();
+        System.out.println("\nChanging MallardDuck behaviors...");
+        duck.setFlyBehavior(new FlyNoWay());
+        duck.setQuackBehavior(new MuteQuack());
+        duck.performFly();
+        duck.performQuack();
 
+        System.out.println("\nNow testing ModelDuck...");
         Duck model = new ModelDuck();
         model.display();
         model.performFly();
         model.performQuack();
 
+        System.out.println("\nUpgrading ModelDuck with wings and quack...");
         model.setFlyBehavior(new FlyWithWings());
         model.setQuackBehavior(new Quack());
         model.performFly();
         model.performQuack();
     }
 }
+/* Output:
+I am a Mallard Duck!
+Flying with wings!
+Quack! Quack!
 
-// Output:
-// I am a Mallard Duck!
-// Flying with wings!
-// Quack! Quack!
-// I can't fly.
-// ... (Silence)
-// I am a Model Duck!
-// I can't fly.
-// ... (Silence)
-// Flying with wings!
-// Quack! Quack!
+Changing MallardDuck behaviors...
+I can't fly.
+... (Silence)
 
+Now testing ModelDuck...
+I am a Model Duck!
+I can't fly.
+... (Silence)
+
+Upgrading ModelDuck with wings and quack...
+Flying with wings!
+Quack! Quack!
+
+ Explanation: Strategy pattern
+
+**🔹 Pattern Type:**
+Behavioral Design Pattern
+
+**🔹 Definition:**
+Defines a family of algorithms, encapsulates each one, and makes them interchangeable at runtime.
+
+**🔹 Why to Use:**
+Used when you want to choose an algorithm’s behavior dynamically without changing the class that uses it.
+
+**🔹 Real-life Example:**
+Like Google Maps — you can choose different routes: driving, walking, or cycling — the strategy (route algorithm) changes, but the app remains the same.
+
+**🔹 Advantages:**
+
+* Promotes flexibility by allowing runtime behavior changes.
+* Removes complex conditional (`if-else`) logic.
+
+**🔹 Disadvantages:**
+
+* Increases the number of classes/objects.
+* Client must understand the differences between strategies.
+*/
