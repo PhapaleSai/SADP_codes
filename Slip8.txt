@@ -6,7 +6,7 @@ interface State {
     void insertQuarter();
     void ejectQuarter();
     void turnCrank();
-}
+} 
 
 class GumballMachine {
     State noQuarter = new State() {
@@ -38,20 +38,40 @@ class GumballMachine {
     void turnCrank() { currentState.turnCrank(); }
 
     public static void main(String[] args) {
-        GumballMachine machine = new GumballMachine(2);
-        machine.insertQuarter(); machine.turnCrank();
-        machine.insertQuarter(); machine.ejectQuarter();
-        machine.insertQuarter(); machine.turnCrank();
-        machine.insertQuarter(); machine.turnCrank();//Slod Out State
+      GumballMachine machine = new GumballMachine(1);
+        machine.insertQuarter();
+        machine.turnCrank();
+        machine.insertQuarter();
+        machine.turnCrank(); 
     }
 }
 
-// output :- 
-// Quarter inserted
-// Crank turned, dispensing
-// Quarter inserted
-// Quarter returned
-// Quarter inserted
-// Crank turned, dispensing
-// Sold out
-// Sold out
+/* output :- 
+Quarter inserted
+Crank turned, dispensing
+Sold out
+Sold out
+
+Explanation: state pattern
+**🔹 Pattern Type:**
+Behavioral Design Pattern
+
+**🔹 Definition:**
+Allows an object to change its behavior when its internal state changes — it appears as if the object’s class itself changed.
+
+**🔹 Why to Use:**
+Used when an object’s behavior depends on its current state, and it must switch between different behaviors dynamically.
+
+**🔹 Real-life Example:**
+Like a traffic light — it behaves differently in red, yellow, and green states.
+Or a mobile phone — acts differently when it’s locked, unlocked, or on silent mode.
+
+**🔹 Advantages:**
+
+* Simplifies complex conditional (`if-else`) logic.
+* Makes state transitions explicit and organized.
+
+**🔹 Disadvantages:**
+* Increases the number of classes.
+* Can be overkill for simple state logic.
+*/
