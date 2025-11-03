@@ -83,10 +83,35 @@ public class CommandPatternDemo {
     }
 }
 
-//output:-
+/* output:-
 // Light is ON
 // Light is OFF
 // Garage Door is OPEN
 // Stereo is ON
 // Stereo playing CD
+
+Explanation:Command Design Pattern
+**🔹 Pattern Type:**
+Behavioral Design Pattern
+
+**🔹 Definition:**
+Encapsulates a request as an object, allowing you to parameterize clients with queues, requests, and operations.
+
+**🔹 Why to Use:**
+Used to decouple the object that issues a request from the one that performs it — helps with undo/redo, logging, and task scheduling.
+
+**🔹 Real-life Example:**
+Like a TV remote — each button (command) tells the TV (receiver) what to do (turn on/off, change channel).
+You can press, undo, or redo commands easily.
+
+**🔹 Advantages:**
+
+* Decouples sender and receiver.
+* Supports undo/redo and command history easily.
+
+**🔹 Disadvantages:**
+* Increases number of classes.
+* Can add complexity for simple actions.
+
+*/
 
