@@ -75,18 +75,42 @@ public class HomeTheaterDemo {
     }
 }
 
-//output:-
-// Get ready to watch a movie...
-// Projector is ON
-// Projector in widescreen mode
-// Amplifier is ON
-// Amplifier volume set to 5
-// DVD Player is ON
-// Playing movie: Inception
+/*output:-
+Starting movie...
+Projector ON
+Widescreen mode
+Amp ON
+Volume 5
+DVD ON
+Playing Inception
 
-// Shutting movie theater down...
-// DVD stopped
-// DVD Player is OFF
-// Amplifier is OFF
-// Projector is OFF
+Stopping movie...
+DVD stopped
+DVD OFF
+Amp OFF
+Projector OFF
 
+Facade Pattern Explanation:
+**🔹 Pattern Type:**
+Structural Design Pattern
+
+**🔹 Definition:**
+Provides a simplified, unified interface to a complex system of classes, libraries, or APIs.
+
+**🔹 Why to Use:**
+Used to make a system easier to use by hiding complex details behind a single, easy-to-use interface.
+
+**🔹 Real-life Example:**
+Like a TV remote — instead of handling circuits and wires, you just press a button to turn the TV on/off or change channels.
+It simplifies many operations into one simple control.
+
+**🔹 Advantages:**
+
+* Simplifies usage of complex systems.
+* Reduces dependencies between subsystems.
+
+**🔹 Disadvantages:**
+
+* Can become a “god object” if it does too much.
+* May hide important underlying functionality or flexibility.
+*/
