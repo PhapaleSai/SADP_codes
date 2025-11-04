@@ -39,8 +39,46 @@ public class AbstractFactoryDemo {
     }
 }
 
+/* Output:-
+// Drawing a Circle
+// Drawing a Square
+// Drawing a Rectangle
+
+**🔹 Pattern Type:**
+Creational Design Pattern
+
+**🔹 Definition:**
+Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+**🔹 Why to Use:**
+Used when a system needs to create multiple related objects that must work together, but you want to keep creation logic independent of the main code.
+
+**🔹 Real-life Example:**
+Like a furniture company — one factory makes “Modern” style (modern chair, modern table), another makes “Victorian” style furniture.
+The client just asks for a factory type, not specific items.
+
+Imagine you have two factories:
+CarFactory → creates Car and CarEngine
+BikeFactory → creates Bike and BikeEngine
+
+The client just says:
+“Give me a factory for Cars or Bikes.”
+Then it uses that factory to create the matching parts — without knowing how they’re built.
+
+**🔹 Advantages:**
+
+* Ensures consistency among related products.
+* Makes it easy to switch product families or add new ones.
+
+**🔹 Disadvantages:**
+* Adds complexity with many interfaces and classes.
+* Difficult to support new product types without changing existing code.
+
+*/
+
 
 // Output:-
 // Drawing a Circle
 // Drawing a Square
 // Drawing a Rectangle
+
