@@ -1,0 +1,172 @@
+Assignment 2:- 
+To write a program to sense the available networks using Arduino 
+1. Designing the Circuit in Tinkercad 
+components: 
+  Arduino Uno R3 
+  LCD 16×2 (parallel) 
+  10k potentiometer (for LCD contrast) 
+  220 Ω resistor (for backlight) 
+  Breadboard (optional) 
+  Jumper wires 
+Wiring (LCD in 4-bit mode) 
+Connect the LCD pins exactly as follows: 
+LCD pin 
+Connect to (Arduino / others) 
+(lcd)   (Arduino Board)
+VSS  ->  GND
+VDD  -> 5V
+ 
+V0 (contrast) -> middle pin of 10k pot (other two pot pins → 5V and GND) 
+RS  ->  D12
+ 
+RW  ->  GND
+ 
+E  ->  D11
+D4 -> D5
+ 
+ 
+D5  ->  D4 
+D6  ->  D3
+ 
+D7  ->  D2 
+
+A (LED+) -> 5V through 220Ω resistor 
+
+K (LED-) -> GND
+ 
+Notes: 
+ If characters are invisible, slowly turn the potentiometer to adjust contrast. 
+ You can place the pot and resistor on the breadboard for tidy wiring. 
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Code :- 
+
+#include <LiquidCrystal.h> 
+// LCD pins: RS=12, E=11, D4=5, D5=4, D6=3, D7=2 
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2); 
+// ----- Mock network data ----- 
+const char* SSIDS[] = 
+{ 
+"MyWiFi", 
+"CollegeNet", 
+"Guest123", 
+"Lab_AP", 
+"Cafe_Free" 
+}; 
+int RSSI[] = { -45, -70, -82, -55, -60 }; // pretend signal strengths (dBm) 
+bool LOCKED[] = { true, true, false, true, false }; // true=Encrypted, false=Open 
+const int N = sizeof(SSIDS) / sizeof(SSIDS[0]); 
+// Timing 
+unsigned long lastSwitch = 0; 
+unsigned long lastScan = 0; 
+int idx = 0; 
+// Map RSSI to 0..5 bars and print using '|' characters 
+void printBars(int rssi, int col) { 
+int bars; 
+if (rssi >= -55) bars = 5; 
+else if (rssi >= -65) bars = 4; 
+else if (rssi >= -75) bars = 3; 
+else if (rssi >= -85) bars = 2; 
+else if (rssi >= -95) bars = 1; 
+else bars = 0; 
+lcd.setCursor(col, 1); 
+for (int i = 0; i < 5; i++) 
+{ 
+  if (i < bars) lcd.print('|'); // visible bar char 
+  else lcd.print(' '); 
+} 
+} 
+void showNetwork(int i) 
+{ 
+  lcd.clear(); 
+  lcd.setCursor(0, 0); 
+  String name = SSIDS[i]; 
+  if (name.length() > 16) name = name.substring(0, 16); 
+  lcd.print(name); 
+  lcd.setCursor(0, 1); 
+  lcd.print(RSSI[i]); lcd.print("dBm "); 
+  if (LOCKED[i]) lcd.print("Lock "); 
+  else           lcd.print("Open "); 
+  // Bars at columns 11..15 
+  printBars(RSSI[i], 11); 
+} 
+
+void scanningAnimation(unsigned long ms) 
+{ 
+  unsigned long start = millis(); 
+  int dot = 0; 
+  while (millis() - start < ms) 
+  { 
+    lcd.clear(); 
+    lcd.setCursor(0, 0); 
+    lcd.print("Scanning"); 
+    // animate small dots 
+    lcd.setCursor(9, 0); 
+    for (int i = 0; i < (dot % 4); i++) lcd.print('.'); 
+    dot++; 
+    delay(250); 
+  } 
+} 
+void randomizeRSSI() 
+{ 
+  for (int i = 0; i < N; i++) 
+  { 
+  int jitter = random(-5, 6); 
+  RSSI[i] += jitter; 
+  if (RSSI[i] < -90) RSSI[i] = -90; 
+  if (RSSI[i] > -35) RSSI[i] = -35; 
+  } 
+} 
+
+void setup() 
+{ 
+  lcd.begin(16, 2); 
+  randomSeed(analogRead(A0)); 
+  lcd.print("Mock WiFi Scan"); 
+  delay(1000); 
+  showNetwork(idx); 
+} 
+void loop() 
+{ 
+  unsigned long now = millis(); 
+  // Fake rescan every 10 seconds 
+  if (now - lastScan >= 10000UL) { 
+  scanningAnimation(2000); // 2 seconds animation 
+  randomizeRSSI(); 
+  lastScan = now; 
+  showNetwork(idx); 
+} 
+// Rotate shown network every 2 seconds 
+if (now - lastSwitch >= 2000UL) 
+{ 
+  idx = (idx + 1) % N; 
+  showNetwork(idx); 
+  lastSwitch = now; 
+  } 
+}
+
+----------------------------------------------------------------
+2   How to set up & run the simulation in Tinkercad 
+1. Open Tinkercad → Circuits → Create new Circuit. 
+2. Drag Arduino Uno, LCD 16×2, 10k pot, 220Ω resistor, and optionally a breadboard onto the 
+workspace. 
+3. Wire the parts exactly per the table in Section 3. (Double check RS, E, D4–D7 pins.) 
+4. Click Code → Text and paste the sketch above (replace any blocks). 
+5. Click Start Simulation. 
+6. If LCD is blank or shows blocks, turn the potentiometer knob to adjust contrast until text appears. 
+7. Watch: it will show “Scanning…”, then cycle through mock SSIDs, dBm, Open/Lock, and bars. It will 
+“rescan” every 10 seconds (jittering RSSI to simulate changes). 
+
+3   Quick explanation of the important code parts 
+ LiquidCrystal lcd(...) — tells library which pins are used. 
+ SSIDS[], RSSI[], LOCKED[] — arrays of fake networks. Change/add names here. 
+ scanningAnimation() — simple visual “Scanning…” animation. 
+ randomizeRSSI() — slightly changes RSSI values so numbers look dynamic. 
+ showNetwork(i) — writes SSID on line 1, and dBm/Open/Lock + bars on line 2. 
+ millis() timing — used so animation, scanning and rotation run without blocking the whole sketch. 
+
+4    Troubleshooting tips 
+ Blank LCD: pot not set or RW not to GND; check power (VDD/VSS) and V0 wiring. 
+ Garbled characters: wrong D4–D7 or RS/E pin order. Double-check mapping. 
+ Backlight dim: ensure A → 5V through 220Ω and K → GND. 
+ Nothing changes: ensure you uploaded/pasted the sketch and clicked Start Simulation. 

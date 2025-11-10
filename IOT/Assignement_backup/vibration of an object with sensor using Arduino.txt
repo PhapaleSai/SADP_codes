@@ -1,0 +1,61 @@
+Assignment  3 
+To write a program to detects the vibration of an object with sensor using Arduino 
+1. Components Needed (in Tinkercad) 
+ Arduino Uno R3 
+ Tilt switch sensor (SW-200D) (or pushbutton → simulating vibration sensor) 
+ 10kΩ resistor (for pull-down if using button; tilt switch has internal) 
+ 1 LED + 220Ω resistor (indicator for vibration) 
+ Jumper wires 
+ Breadboard (optional for neat wiring) 
+
+2. Circuit Design (Connections) 
+If using tilt switch in Tinkercad (SW-200D): 
+ One leg of tilt switch → 5V 
+ Other leg → Arduino digital pin 2 
+ Also connect that leg → 10kΩ resistor → GND (pull-down resistor so it reads LOW when no vibration) 
+
+LED connections: 
+ LED Anode (long leg) → Arduino D13 (through 220Ω resistor) 
+ LED Cathode (short leg) → GND 
+So the Arduino can read HIGH when vibration is detected and turn ON the LED. 
+-------------------------------------------------------------------------------------------------------
+code :- 
+const int vibrationPin = 2;   // Tilt switch / vibration sensor input 
+const int ledPin = 13;      
+  // LED output 
+int vibrationState = 0; 
+void setup () { 
+pinMode(vibrationPin, INPUT); 
+pinMode(ledPin, OUTPUT); 
+Serial.begin(9600); 
+} 
+void loop () { 
+// Read sensor 
+vibrationState = digitalRead(vibrationPin); 
+if (vibrationState == HIGH) { 
+digitalWrite(ledPin, HIGH);      // LED ON 
+Serial.println("Vibration Detected!"); 
+} else { 
+} 
+digitalWrite(ledPin, LOW);       // LED OFF 
+Serial.println("No Vibration"); 
+delay(200); // small delay to stabilize readings 
+} 
+-----------------------------------------------------------------------------------------------------
+4. How to Run in Tinkercad 
+1. Go to Tinkercad → Circuits → Create New Circuit. 
+2. Drag and place: Arduino Uno, tilt switch sensor (or pushbutton), LED, resistors. 
+3. Wire exactly as explained above. 
+4. Go to Code → Text and paste the Arduino sketch. 
+5. Click Start Simulation. 
+6. To simulate vibration: 
+o If using tilt switch: click the component → toggle its state → Arduino reads it as vibration. 
+o If using pushbutton: press/release → Arduino simulates vibration. 
+7. Open the Serial Monitor to see "Vibration Detected!" or "No Vibration". 
+8. LED on Pin 13 will also turn ON when vibration is detected.
+
+Working Principle 
+ The tilt switch (or pushbutton) works like a vibration sensor: it closes (HIGH) when shaken or tilted. 
+ Arduino checks the sensor state: 
+o HIGH → vibration detected → LED ON + Serial message. 
+o LOW → no vibration → LED OFF.

@@ -1,0 +1,54 @@
+Assignment  4 
+To write a program to get temperature notification using Arduino. 
+We’ll use an Arduino Uno with a temperature sensor (e.g., LM35/ TMP36) and an LED or Serial Monitor 
+for notification. 
+1. Components Needed (in Tinkercad) 
+Components: 
+ Arduino Uno R3 
+ LM35/ TMP36 (temperature sensor) 
+ 1 LED (for visual notification) 
+ 1 Resistor (220Ω for LED) 
+ Breadboard & wires 
+2. Circuit Design (Connections) 
+Connections: 
+ LM35/ TMP36: 
+o VCC → 5V 
+o GND → GND 
+o OUT → A0 (Analog Pin) 
+ LED: 
+o Anode (+) → Pin 13 (or any digital pin) via 220Ω resistor 
+o Cathode (–) → GND
+
+-----------------------------------------------------------------------
+code :-
+
+int sensorPin = A0;   // LM35 output connected to A0 (TMP36) 
+int ledPin = 13;      // LED connected to pin 13 
+float temperature;    // variable to store temperature 
+void setup() { 
+Serial.begin (9600);   // Start Serial Monitor 
+pinMode(ledPin, OUTPUT); 
+} 
+void loop () { 
+int reading = analogRead(sensorPin);         // read sensor value 
+temperature = (reading * 5.0 * 100.0) / 1024; // convert to Celsius 
+Serial.print("Temperature: "); 
+Serial.print(temperature); 
+Serial.println(" *C"); 
+// Notification if temperature > 30°C 
+if (temperature > 30) { 
+digitalWrite(ledPin, HIGH);  // Turn ON LED 
+Serial.println("⚠️ High Temperature!"); 
+} else { 
+digitalWrite(ledPin, LOW);   // Turn OFF LED 
+} 
+delay(1000); // read every second 
+}
+----------------------------------------------------------------------------------
+4. Run the Simulation 
+1. Paste the code into the Code Editor in Tinkercad. 
+2. Click Start Simulation. 
+3. Open the Serial Monitor (top-right) to see temperature readings. 
+4. Increase TMP36 temperature (click the sensor in Tinkercad → adjust value). 
+o If >30°C → LED lights up + “High Temperature!” message appears.
+

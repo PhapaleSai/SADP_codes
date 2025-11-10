@@ -1,0 +1,68 @@
+Assignment 1 
+To write a program to measure the distance using ultrasonic sensor and make LED blink 
+using Arduino. 
+
+1. Designing the Circuit in Tinkercad 
+components: 
+ Arduino Uno R3 
+ Ultrasonic Sensor (HC-SR04) 
+ Breadboard (optional) 
+ Jumper wires 
+ 1 LED 
+ 1 Resistor (220Ω or 330Ω) 
+
+Connections: 
+ VCC (Ultrasonic) → 5V (Arduino) 
+ GND (Ultrasonic) → GND (Arduino) 
+ TRIG (Ultrasonic) → Digital Pin 9 (Arduino) 
+ ECHO (Ultrasonic) → Digital Pin 10 (Arduino) 
+    LED Anode (long leg) → Arduino Digital Pin 7 (through resistor). 
+ Connect the anode to Pin 7. 
+ Place a 220Ω resistor between Pin 7 and LED anode (to limit current). 
+    LED Cathode (short leg) → GND (Arduino).
+
+2. Arduino Code for Ultrasonic Distance 
+IMP-------------------------------------------------------------------------------------------------- 
+
+const int trigPin = 9;
+const int echoPin = 10;
+const int ledPin = 7; 
+long duration; 
+int distance; 
+void setup() 
+{ 
+  Serial.begin(9600); 
+  pinMode(trigPin,OUTPUT); 
+  pinMode(echoPin,INPUT); 
+  pinMode(ledPin,OUTPUT); 
+} 
+void loop() 
+{
+  digitalWrite(trigPin,LOW);
+  delayMicroseconds(2); 
+  digitalWrite(trigPin,HIGH); 
+  delayMicroseconds(10); 
+  digitalWrite(trigPin,LOW); 
+  duration = pulseIn(echoPin,HIGH);
+  distance = duration *0.034/2; 
+  Serial.print("Distance :"); 
+  Serial.print(distance); 
+  Serial.println(" cm"); 
+  if(distance < 200) 
+  { 
+    digitalWrite(ledPin,HIGH);
+  }
+  else
+  {
+    digitalWrite(ledPin,LOW); 
+  } delay(500); }
+
+----------------------------------------------------------------------------------------
+3. How to Run in Tinkercad 
+1. Add the LED and resistor as described. 
+2. Upload the modified code in Code → Text Editor. 
+3. Click Start Simulation. 
+4. Move the object in front of the ultrasonic sensor (in simulation you can drag the distance slider). 
+5. Watch the LED: 
+o 🔴 ON when object is closer than 200 cm 
+o ⚫ OFF otherwise
