@@ -145,6 +145,7 @@
     Current time is : 20:14:01
 
 # d) Read a file line by line and print the word count of each line
+Create a file in same folder with some content 
 
 filename = "sample.txt"
 
