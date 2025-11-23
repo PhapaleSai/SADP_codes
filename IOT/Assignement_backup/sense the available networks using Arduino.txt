@@ -13,8 +13,8 @@ Connect the LCD pins exactly as follows:
 LCD pin 
 Connect to (Arduino / others) 
 (lcd)   (Arduino Board)
-VSS  ->  GND
-VDD  -> 5V
+GND ->  GND
+VCC  -> 5V
  
 V0 (contrast) -> middle pin of 10k pot (other two pot pins → 5V and GND) 
 RS  ->  D12
@@ -170,3 +170,4 @@ workspace.
  Garbled characters: wrong D4–D7 or RS/E pin order. Double-check mapping. 
  Backlight dim: ensure A → 5V through 220Ω and K → GND. 
  Nothing changes: ensure you uploaded/pasted the sketch and clicked Start Simulation. 
+
