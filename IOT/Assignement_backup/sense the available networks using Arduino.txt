@@ -22,7 +22,7 @@ RS  ->  D12
 RW  ->  GND
       (D means digital pins)
 E  ->  D11
-D4 -> D5
+DB4 -> D5
  
  
 DB5  ->  D4 
@@ -170,5 +170,6 @@ workspace.
  Garbled characters: wrong D4–D7 or RS/E pin order. Double-check mapping. 
  Backlight dim: ensure A → 5V through 220Ω and K → GND. 
  Nothing changes: ensure you uploaded/pasted the sketch and clicked Start Simulation. 
+
 
 
