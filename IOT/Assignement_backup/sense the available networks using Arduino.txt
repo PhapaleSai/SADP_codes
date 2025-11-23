@@ -20,15 +20,15 @@ V0 (contrast) -> middle pin of 10k pot (other two pot pins → 5V and GND)
 RS  ->  D12
  
 RW  ->  GND
- 
+      (D means digital pins)
 E  ->  D11
 D4 -> D5
  
  
-D5  ->  D4 
-D6  ->  D3
+DB5  ->  D4 
+DB6  ->  D3
  
-D7  ->  D2 
+DB7  ->  D2 
 
 A (LED+) -> 5V through 220Ω resistor 
 
@@ -170,4 +170,5 @@ workspace.
  Garbled characters: wrong D4–D7 or RS/E pin order. Double-check mapping. 
  Backlight dim: ensure A → 5V through 220Ω and K → GND. 
  Nothing changes: ensure you uploaded/pasted the sketch and clicked Start Simulation. 
+
 
